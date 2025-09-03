@@ -203,7 +203,3 @@ pnpm install
    - `@tailwindcss/postcss` is installed.
    - `tailwind.css` is imported in your entry file.
    - Dev server is restarted after config changes.
-
- ---
-
- Let me know if you want this saved as a `README.md` or need further customization!
