@@ -1,3 +1,45 @@
+## Using This Boilerplate for New Projects
+
+### 1. Clone or Fork
+
+- **Clone:**
+
+  ```sh
+  git clone https://github.com/ralucamavriche/react-boilerplate.git
+  cd react-boilerplate
+  ```
+
+- **Fork:**
+  - Click “Fork” on GitHub, then clone your fork:
+    ```sh
+    git clone https://github.com/<your-username>/react-boilerplate.git
+    cd react-boilerplate
+    ```
+
+### 2. Start Fresh
+
+- Remove the existing git history:
+  ```sh
+  rm -rf .git
+  git init
+  git branch -m main
+  git add .
+  git commit -m "Initial commit for my new project"
+  ```
+
+- Update `package.json`:
+  - Change the `name`, `description`, and other fields as needed.
+
+### 3. Install Dependencies
+
+```sh
+pnpm install
+```
+(or use `npm install` or `yarn install`)
+
+### 4. Start Building
+
+- Use the provided scripts to run, build, test, and develop your new app.
  # React Boilerplate Documentation
 
  ## Overview
