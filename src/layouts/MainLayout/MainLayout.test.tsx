@@ -1,15 +1,17 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 
 import MainLayout from './MainLayout';
 
 describe('MainLayout', () => {
-  it('renders children', () => {
+  it('renders header, dashboard link, and footer', () => {
     render(
-      <MainLayout>
-        <div>Content</div>
-      </MainLayout>,
+      <MemoryRouter>
+        <MainLayout />
+      </MemoryRouter>,
     );
-    expect(screen.getByText('Content')).not.toBeNull();
+    expect(screen.getByText(/Go to Dashboard/i)).toBeInTheDocument();
+    expect(screen.getByText(/Footer/i)).toBeInTheDocument();
   });
 });
