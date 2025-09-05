@@ -1,6 +1,7 @@
+import { MemoryRouter } from 'react-router-dom';
 import MainLayout from './MainLayout';
 
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 
 const meta: Meta<typeof MainLayout> = {
   component: MainLayout,
@@ -8,10 +9,8 @@ const meta: Meta<typeof MainLayout> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof MainLayout>;
-
-export const Default: Story = {
-  args: {
-    children: 'Main Content',
-  },
-};
+export const Default = () => (
+  <MemoryRouter>
+    <MainLayout />
+  </MemoryRouter>
+);

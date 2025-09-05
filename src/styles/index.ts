@@ -1,2 +1,2 @@
 // Export global styles if needed
-export * from './variables.css';
+import './variables.css';
