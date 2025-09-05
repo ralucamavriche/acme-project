@@ -4,12 +4,12 @@ import { describe, expect, it } from 'vitest';
 import Header from './Header';
 
 describe('Header', () => {
-  it('renders correctly the text', () => {
+  it('renders the text correctly', () => {
     render(<Header />);
     expect(screen.getByText('Acme')).toBeInTheDocument();
   });
 
-  it('renders correctly the icon', () => {
+  it('renders the icon correctly', () => {
     render(<Header />);
     expect(document.querySelector('svg')).toBeInTheDocument();
   });
