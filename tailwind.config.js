@@ -7,8 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--primary-color)',
-      }
+        primary: '#0070fb',
+      },
+      fontFamily: {
+        lusitana: ['Lusitana', 'serif'],
+      },
     },
   },
   plugins: [],
