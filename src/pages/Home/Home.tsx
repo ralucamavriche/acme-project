@@ -3,8 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => (
-  <div className="flex flex-col md:flex-row gap-4 mt-4 ">
-    <div className="flex flex-col gap-6 justify-center bg-gray-50 rounded-lg px-6 py-10 w-full md:p-20 md:w-2/5 ">
+  <div className="flex flex-col md:flex-row gap-4 mt-4">
+    <div className="flex flex-col gap-6 justify-center bg-gray-50 rounded-lg px-6 py-10 w-full md:p-20 md:w-2/5">
       <p className="text-xl md:text-3xl text-gray-800 md:leading-normal">
         <strong>Welcome to Acme. </strong>
         This is the example for the
