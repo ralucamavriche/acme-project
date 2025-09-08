@@ -4,8 +4,8 @@ import { describe, expect, it } from 'vitest';
 import App from './App';
 
 describe('App', () => {
-  it('renders Home Page heading', () => {
+  it('renders Home Page page by default', () => {
     render(<App />);
-    expect(screen.getByRole('heading', { name: /Home Page/i })).toBeInTheDocument();
+    expect(screen.getByText(/Welcome to Acme/i)).toBeInTheDocument();
   });
 });

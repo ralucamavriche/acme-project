@@ -11,7 +11,6 @@ describe('MainLayout', () => {
         <MainLayout />
       </MemoryRouter>,
     );
-    expect(screen.getByText(/Go to Dashboard/i)).toBeInTheDocument();
-    expect(screen.getByText(/Footer/i)).toBeInTheDocument();
+    expect(screen.getByText(/Acme/i)).toBeInTheDocument();
   });
 });

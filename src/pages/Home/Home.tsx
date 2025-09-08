@@ -1,5 +1,6 @@
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => (
   <div className="flex flex-col md:flex-row gap-4 mt-4 ">
@@ -13,9 +14,11 @@ const Home: React.FC = () => (
         </a>
         , brought to you by Vercel.
       </p>
-      <button className="flex items-center gap-5 self-start text-sm rounded-lg bg-primary px-6 py-3 font-medium text-white transition-colors hover:bg-blue-400 md:text-base">
-        Log in <ArrowRightIcon className="w-5 md:w-6" />
-      </button>
+      <Link to="/dashboard">
+        <button className="flex items-center gap-5 self-start text-sm rounded-lg bg-primary px-6 py-3 font-medium text-white transition-colors hover:bg-blue-400 md:text-base">
+          Dashboard <ArrowRightIcon className="w-5 md:w-6" />
+        </button>
+      </Link>
     </div>
     <div className="flex justify-center items-center w-full md:w-3/5 px-6 py-3 md:px-28 md:py-12">
       <img
