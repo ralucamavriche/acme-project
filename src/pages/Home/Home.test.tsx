@@ -17,7 +17,7 @@ describe('Home', () => {
         <Home />
       </MemoryRouter>,
     );
-    expect(screen.getByText(/Welcome to Acme/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Welcome to Acme/i })).toBeInTheDocument();
   });
   it('contains link to Next.js Learn Course', () => {
     render(

@@ -11,6 +11,6 @@ describe('MainLayout', () => {
         <MainLayout />
       </MemoryRouter>,
     );
-    expect(screen.getByText(/Acme/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Acme/i })).toBeInTheDocument();
   });
 });

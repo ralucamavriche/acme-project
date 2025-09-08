@@ -6,7 +6,7 @@ const Home: React.FC = () => (
   <div className="flex flex-col md:flex-row gap-4 mt-4">
     <div className="flex flex-col gap-6 justify-center bg-gray-50 rounded-lg px-6 py-10 w-full md:p-20 md:w-2/5">
       <p className="text-xl md:text-3xl text-gray-800 md:leading-normal">
-        <strong>Welcome to Acme. </strong>
+        <h1 className="text-xl md:text-3xl font-bold inline">Welcome to Acme. </h1>
         This is the example for the
         <a className="text-blue-500" href="https://nextjs.org/learn">
           {' '}
@@ -24,12 +24,12 @@ const Home: React.FC = () => (
       <img
         src="/hero-desktop.png"
         alt="Illustration of Acme product and team for desktop view"
-        className="w-full max-w-[1000px] h-auto hidden md:block"
+        className="w-full h-auto hidden md:block"
       />
       <img
         src="/hero-mobile.png"
         alt="Illustration of Acme product and team for mobile view"
-        className="block md:hidden w-full max-w-[560px] h-auto"
+        className="block md:hidden w-full h-auto"
       />
     </div>
   </div>
