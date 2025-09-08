@@ -28,7 +28,7 @@ describe('Home', () => {
     const link = screen.getByRole('link', { name: /Next.js Learn Course/i });
     expect(link).toHaveAttribute('href', 'https://nextjs.org/learn');
   });
-  it('navigste to dashbord when dashboard button is clicked', async () => {
+  it('navigate to dashboard when dashboard button is clicked', async () => {
     render(
       <MemoryRouter>
         <Routes>

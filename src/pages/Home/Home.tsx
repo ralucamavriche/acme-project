@@ -23,12 +23,12 @@ const Home: React.FC = () => (
     <div className="flex justify-center items-center w-full md:w-3/5 px-6 py-3 md:px-28 md:py-12">
       <img
         src="/hero-desktop.png"
-        alt="Hero Desktop"
+        alt="Illustration of Acme product and team for desktop view"
         className="w-full max-w-[1000px] h-auto hidden md:block"
       />
       <img
         src="/hero-mobile.png"
-        alt="Hero Mobile"
+        alt="Illustration of Acme product and team for mobile view"
         className="block md:hidden w-full max-w-[560px] h-auto"
       />
     </div>
