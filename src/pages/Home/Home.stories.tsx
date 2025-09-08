@@ -1,6 +1,7 @@
+import { MemoryRouter } from 'react-router-dom';
 import Home from './Home';
 
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 
 const meta: Meta<typeof Home> = {
   component: Home,
@@ -8,6 +9,8 @@ const meta: Meta<typeof Home> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof Home>;
-
-export const Default: Story = {};
+export const Default = () => (
+  <MemoryRouter>
+    <Home />
+  </MemoryRouter>
+);
