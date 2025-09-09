@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Blue background -->
+  <rect width="48" height="48" rx="8" fill="#2563EB"/>
+  <!-- Rotated Globe -->
+  <g transform="rotate(15 24 24)" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="24" r="14"/>
+    <ellipse cx="24" cy="24" rx="7" ry="14"/>
+    <path d="M10 24h28"/>
+    <path d="M13 16c3 2 8 3 11 3s8-1 11-3"/>
+    <path d="M13 32c3-2 8-3 11-3s8 1 11 3"/>
+  </g>
+</svg>
