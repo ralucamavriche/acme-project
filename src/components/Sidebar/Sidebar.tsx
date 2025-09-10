@@ -28,7 +28,7 @@ const NavbarLink = ({
       }`}
     >
       <Icon className="w-6" />
-      <span className="hidden md:block">{name}</span>
+      <h1 className="hidden md:block">{name}</h1>
     </Link>
   );
 };
