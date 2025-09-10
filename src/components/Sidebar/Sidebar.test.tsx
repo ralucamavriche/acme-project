@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
 describe('Sidebar', () => {
-  it('render navigation links', () => {
+  it('renders navigation links', () => {
     render(
       <MemoryRouter>
         <Sidebar />
@@ -13,7 +13,7 @@ describe('Sidebar', () => {
     expect(screen.getByRole('heading', { name: /Invoices/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Customers/i })).toBeInTheDocument();
   });
-  it('render sign out link', () => {
+  it('renders sign out link', () => {
     render(
       <MemoryRouter>
         <Sidebar />
