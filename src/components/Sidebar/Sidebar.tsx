@@ -7,6 +7,24 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 import Header from '../Header';
 
+const categoryList: Array<{ name: string; icon: React.ElementType; href: string }> = [
+  {
+    name: 'Home',
+    icon: HomeIcon,
+    href: '/dashboard',
+  },
+  {
+    name: 'Invoices',
+    icon: DocumentDuplicateIcon,
+    href: '/dashboard/invoices',
+  },
+  {
+    name: 'Customers',
+    icon: UserGroupIcon,
+    href: '/dashboard/customers',
+  },
+];
+
 const NavbarLink = ({
   isSignOut,
   isActive,
@@ -34,25 +52,6 @@ const NavbarLink = ({
 };
 const Sidebar = () => {
   const location = useLocation();
-
-  const categoryList = [
-    {
-      name: 'Home',
-      icon: HomeIcon,
-      href: '/dashboard',
-    },
-    {
-      name: 'Invoices',
-      icon: DocumentDuplicateIcon,
-      href: '/dashboard/invoices',
-    },
-    {
-      name: 'Customers',
-      icon: UserGroupIcon,
-      href: '/dashboard/customers',
-    },
-  ];
-
   return (
     <aside className="flex w-full flex-col px-3 py-4 md:min-h-screen md:w-64 md:px-2">
       <Header variant="sidebar" />
