@@ -1,3 +1,5 @@
+import Stats from '../../components/Stats';
+
 const DashboardMetadata = () => {
   return (
     <>
@@ -12,9 +14,9 @@ const DashboardMetadata = () => {
 const DashboardPage: React.FC = () => (
   <>
     <DashboardMetadata />
-    <div>
-      <h1>Dashboard Page</h1>
-      <p>This is the dashboard page placeholder.</p>
+    <div className="flex-grow p-6 md:p-12">
+      <h1 className="mb-4 text-xl md:text-2xl">Dashboard</h1>
+      <Stats />
     </div>
   </>
 );
