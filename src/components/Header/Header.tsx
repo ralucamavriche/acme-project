@@ -1,12 +1,14 @@
-import { GlobeAltIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
+import AcmeLogo from '../AcmeLogo';
 
-const Header = () => {
+const Header = ({ variant = 'default' }: { variant: 'sidebar' | 'default' }) => {
   return (
-    <div className="bg-primary flex items-end rounded-lg p-4 h-20 md:h-52">
-      <div className="flex items-center">
-        <GlobeAltIcon className="h-12 w-12 text-white rotate-[15deg]" />
-        <h1 className="text-white text-[44px] leading-none">Acme</h1>
-      </div>
+    <div
+      className={`flex items-end rounded-md bg-blue-500 p-4 ${variant === 'sidebar' ? `mb-2 md:h-40` : `h-20 md:h-52`} `}
+    >
+      <Link to="/">
+        <AcmeLogo />
+      </Link>
     </div>
   );
 };
