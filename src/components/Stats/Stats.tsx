@@ -32,7 +32,7 @@ const statsData: Array<CardProps> = [
 
 const Card: React.FC<CardProps> = ({ title, amount, Icon: Icon }) => {
   return (
-    <div key={title} className="rounded-xl bg-gray-50 p-2">
+    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
       <div className="flex p-4">
         <Icon className="h-5 w-5 text-gray-700" />
         <h1 className="ml-2 font-medium">{title}</h1>
@@ -44,7 +44,7 @@ const Card: React.FC<CardProps> = ({ title, amount, Icon: Icon }) => {
 
 const Stats = () => {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {statsData.map(({ title, amount, Icon: Icon }) => (
         <div key={title}>
           <Card title={title} amount={amount} Icon={Icon} />
