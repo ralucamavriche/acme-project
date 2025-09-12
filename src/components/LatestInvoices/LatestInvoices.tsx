@@ -64,17 +64,17 @@ const LatestInvoices = () => {
                   alt={`${person.name}'s profile picture`}
                 />
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold md:text-base">{person.name}</p>
-                  <p className="hidden text-sm text-gray-500 sm:block">{person.email}</p>
+                  <h3 className="truncate text-sm font-semibold md:text-base">{person.name}</h3>
+                  <h3 className="hidden text-sm text-gray-500 sm:block">{person.email}</h3>
                 </div>
               </div>
-              <h1 className="truncate text-sm font-medium md:text-base">{person.amount}</h1>
+              <h3 className="truncate text-sm font-medium md:text-base">{person.amount}</h3>
             </div>
           ))}
         </div>
         <div className="flex items-center pb-2 pt-8">
           <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-          <h1 className="text-md ml-2 text-gray-500">Updated just now</h1>
+          <h2 className="text-md ml-2 text-gray-500">Updated just now</h2>
         </div>
       </div>
     </div>
