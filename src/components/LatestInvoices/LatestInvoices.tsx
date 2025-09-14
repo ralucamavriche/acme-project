@@ -65,7 +65,7 @@ const LatestInvoices = () => {
                 />
                 <div className="min-w-0">
                   <h3 className="truncate text-sm font-semibold md:text-base">{person.name}</h3>
-                  <h3 className="hidden text-sm text-gray-500 sm:block">{person.email}</h3>
+                  <h3 className="hidden truncate text-sm text-gray-500 sm:block">{person.email}</h3>
                 </div>
               </div>
               <h3 className="truncate text-sm font-medium md:text-base">{person.amount}</h3>
