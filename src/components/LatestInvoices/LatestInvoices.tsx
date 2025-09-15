@@ -49,7 +49,7 @@ const latestInvoices: Person[] = [
 const LatestInvoices = () => {
   return (
     <div className="flex flex-col">
-      <h1 className="mb-4 text-xl md:text-2xl">Latest Invoices</h1>
+      <h1 className="mb-4 font-lusitana text-xl md:text-2xl">Latest Invoices</h1>
       <div className="flex h-full flex-col rounded-lg bg-gray-50 p-4 shadow-sm">
         <div className="flex grow flex-col justify-between bg-white px-6">
           {latestInvoices.map((person) => (
@@ -74,7 +74,7 @@ const LatestInvoices = () => {
         </div>
         <div className="flex items-center pb-2 pt-8">
           <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-          <h2 className="text-md ml-2 text-gray-500">Updated just now</h2>
+          <h2 className="ml-2 text-sm text-gray-500">Updated just now</h2>
         </div>
       </div>
     </div>

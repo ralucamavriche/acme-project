@@ -46,7 +46,7 @@ const NavbarLink = ({
       }`}
     >
       <Icon className="w-6" />
-      <h1 className="hidden md:block">{name}</h1>
+      <h1 className="hidden text-sm md:block">{name}</h1>
     </Link>
   );
 };
