@@ -3,7 +3,8 @@ export function formatCurrency(
   currency: string = 'USD',
   locale: string = 'en-US',
 ): string {
-  return value.toLocaleString(locale, {
+  const amount = value / 100;
+  return amount.toLocaleString(locale, {
     style: 'currency',
     currency,
     minimumFractionDigits: 2,

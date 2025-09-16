@@ -12,12 +12,12 @@ type CardProps = {
 const statsData: Array<CardProps> = [
   {
     title: 'Collected',
-    amount: 2947.26,
+    amount: 294726,
     Icon: BanknotesIcon,
   },
   {
     title: 'Pending',
-    amount: 1256.32,
+    amount: 125632,
     Icon: ClockIcon,
   },
   {
@@ -32,7 +32,7 @@ const statsData: Array<CardProps> = [
   },
 ];
 
-const Card: React.FC<CardProps> = ({ title, amount, value, Icon: Icon }) => {
+const Card: React.FC<CardProps> = ({ title, amount, value = 0, Icon: Icon }) => {
   return (
     <div className="rounded-xl bg-gray-50 p-2">
       <div className="flex p-4">
@@ -40,7 +40,7 @@ const Card: React.FC<CardProps> = ({ title, amount, value, Icon: Icon }) => {
         <h1 className="ml-2 font-medium">{title}</h1>
       </div>
       <h1 className="rounded-xl bg-white px-4 py-8 text-center text-2xl">
-        {amount !== undefined ? formatCurrency(amount) : (value ?? 0)}
+        {amount ? formatCurrency(amount) : value}
       </h1>
     </div>
   );
