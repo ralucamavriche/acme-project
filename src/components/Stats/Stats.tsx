@@ -34,12 +34,12 @@ const statsData: Array<CardProps> = [
 
 const Card: React.FC<CardProps> = ({ title, amount, value = 0, Icon: Icon }) => {
   return (
-    <div className="rounded-xl bg-gray-50 p-2">
+    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
       <div className="flex p-4">
         <Icon className="h-5 w-5 text-gray-700" />
-        <h1 className="ml-2 font-medium">{title}</h1>
+        <h1 className="ml-2 text-sm font-medium">{title}</h1>
       </div>
-      <h1 className="rounded-xl bg-white px-4 py-8 text-center text-2xl">
+      <h1 className="rounded-xl bg-white px-4 py-8 text-center font-lusitana text-2xl">
         {amount ? formatCurrency(amount) : value}
       </h1>
     </div>
@@ -48,7 +48,7 @@ const Card: React.FC<CardProps> = ({ title, amount, value = 0, Icon: Icon }) => 
 
 const Stats = () => {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {statsData.map(({ title, amount, value, Icon: Icon }) => (
         <Card key={title} title={title} amount={amount} value={value} Icon={Icon} />
       ))}
