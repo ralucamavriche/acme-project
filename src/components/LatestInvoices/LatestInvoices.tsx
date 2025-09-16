@@ -1,11 +1,14 @@
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
-
+import { formatCurrency } from '../../utils/formatCurrency';
+import { getTimeDifference } from '../../utils/getTimeDifference/getTimeDifference';
 type Person = {
   id: number;
   name: string;
   email: string;
-  amount: string;
+  amount: number;
   imageUrl: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 const latestInvoices: Person[] = [
@@ -13,36 +16,46 @@ const latestInvoices: Person[] = [
     id: 1,
     name: 'Delba de Oliveira',
     email: 'delba@oliveira.com',
-    amount: '$2,344.00',
+    amount: 234400,
     imageUrl: '/customers/delba-de-oliveira.png',
+    createdAt: '2025-08-15T12:00:00Z',
+    updatedAt: '2025-09-16T12:00:00Z',
   },
   {
     id: 2,
     name: 'Delba de Oliveira',
     email: 'delba@oliveira.com',
-    amount: '$50.00',
+    amount: 5000,
     imageUrl: '/customers/delba-de-oliveira.png',
+    createdAt: '2024-09-20T12:00:00Z',
+    updatedAt: '2024-09-20T12:00:00Z',
   },
   {
     id: 3,
     name: 'Balazs Orban',
     email: 'balazs.orban@example.com',
-    amount: '$345.77',
+    amount: 34577,
     imageUrl: '/customers/balazs-orban.png',
+    createdAt: '2024-09-20T12:00:00Z',
+    updatedAt: '2024-09-20T12:00:00Z',
   },
   {
     id: 4,
     name: 'Lee Robinson',
     email: 'lee.robinson@example.com',
-    amount: '$542.46',
+    amount: 54246,
     imageUrl: '/customers/lee-robinson.png',
+    createdAt: '2024-09-20T12:00:00Z',
+    updatedAt: '2024-09-20T12:00:00Z',
   },
   {
     id: 5,
     name: 'Evil Rabbit',
     email: 'evil.rabbit@example.com',
-    amount: '$6.66',
+    amount: 666,
     imageUrl: '/customers/evil-rabbit.png',
+    createdAt: '2024-09-20T12:00:00Z',
+    updatedAt: '2024-09-20T12:00:00Z',
   },
 ];
 
@@ -68,13 +81,17 @@ const LatestInvoices = () => {
                   <h3 className="hidden truncate text-sm text-gray-500 sm:block">{person.email}</h3>
                 </div>
               </div>
-              <h3 className="truncate text-sm font-medium md:text-base">{person.amount}</h3>
+              <h3 className="truncate text-sm font-medium md:text-base">
+                {formatCurrency(person.amount)}
+              </h3>
             </div>
           ))}
         </div>
         <div className="flex items-center pb-2 pt-8">
           <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-          <h2 className="text-md ml-2 text-gray-500">Updated just now</h2>
+          <h2 className="text-md ml-2 text-gray-500">
+            {getTimeDifference(latestInvoices[0].updatedAt)}
+          </h2>
         </div>
       </div>
     </div>

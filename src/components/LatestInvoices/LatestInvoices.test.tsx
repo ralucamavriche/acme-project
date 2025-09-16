@@ -6,7 +6,6 @@ describe('LatestInvoices', () => {
   it('renders correctly', () => {
     render(<LatestInvoices />);
     expect(screen.getByRole('heading', { name: /Latest Invoices/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Updated just now' })).toBeInTheDocument();
   });
   it('renders the latest invoices correctly', () => {
     render(<LatestInvoices />);
