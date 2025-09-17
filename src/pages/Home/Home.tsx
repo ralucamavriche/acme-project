@@ -18,10 +18,10 @@ const HomeMetadata = () => {
 const Home: React.FC = () => (
   <>
     <HomeMetadata />
-    <div className="flex flex-col md:flex-row gap-4 mt-4">
-      <div className="flex flex-col gap-6 justify-center bg-gray-50 rounded-lg px-6 py-10 w-full md:p-20 md:w-2/5">
-        <div className="text-xl md:text-3xl text-gray-800 md:leading-normal">
-          <h1 className="font-bold inline">Welcome to Acme. </h1>
+    <div className="mt-4 flex flex-col gap-4 md:flex-row">
+      <div className="flex w-full flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:p-20">
+        <div className="font-lusitana text-xl text-gray-800 md:text-3xl md:leading-normal">
+          <h1 className="inline font-bold">Welcome to Acme. </h1>
           This is the example for the
           <a className="text-blue-500" href="https://nextjs.org/learn">
             {' '}
@@ -30,21 +30,21 @@ const Home: React.FC = () => (
           , brought to you by Vercel.
         </div>
         <Link to="/dashboard">
-          <button className="flex items-center gap-5 self-start text-sm rounded-lg bg-primary px-6 py-3 font-medium text-white transition-colors hover:bg-blue-400 md:text-base">
+          <button className="flex items-center gap-5 self-start rounded-lg bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base">
             Dashboard <ArrowRightIcon className="w-5 md:w-6" />
           </button>
         </Link>
       </div>
-      <div className="flex justify-center items-center w-full md:w-3/5 px-6 py-3 md:px-28 md:py-12">
+      <div className="flex w-full items-center justify-center px-6 py-3 md:w-3/5 md:px-28 md:py-12">
         <img
           src="/hero-desktop.png"
           alt="Illustration of Acme product and team for desktop view"
-          className="w-full h-auto hidden md:block"
+          className="hidden h-auto w-full md:block"
         />
         <img
           src="/hero-mobile.png"
           alt="Illustration of Acme product and team for mobile view"
-          className="block md:hidden w-full h-auto"
+          className="block h-auto w-full md:hidden"
         />
       </div>
     </div>
