@@ -1,5 +1,4 @@
 import { CalendarIcon } from '@heroicons/react/24/outline';
-import { getTimeDifference } from '../../utils/getTimeDifference';
 import Chart from './Chart';
 
 interface RevenueData {
@@ -32,14 +31,11 @@ const RevenueChart = () => {
         <div className="flex h-[300px] grow flex-col justify-between bg-white px-2">
           <Chart data={revenueData} />
         </div>
-        {revenueData?.[0]?.updatedAt ? (
-          <div className="flex items-center pb-2 pt-8">
-            <CalendarIcon className="h-5 w-5 text-gray-500" />
-            <h2 className="ml-2 text-sm text-gray-500">
-              Last {''} {getTimeDifference(revenueData[0].updatedAt)}
-            </h2>
-          </div>
-        ) : null}
+
+        <div className="flex items-center pb-2 pt-8">
+          <CalendarIcon className="h-5 w-5 text-gray-500" />
+          <h2 className="ml-2 text-sm text-gray-500">Last 12 months</h2>
+        </div>
       </div>
     </div>
   );
