@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 
-const useResize = () => {
-  const [size, setSize] = useState([0, 0]);
+/**
+ * Returns a size array with the current window width and height.
+ * Updates the size whenever the window is resized.
+ * @returns {[number, number]} - [width, height]
+ */
+
+const useResize = (): [number, number] => {
+  const [size, setSize] = useState<[number, number]>([0, 0]);
   useEffect(() => {
     const getSize = () => setSize([window.innerWidth, window.innerHeight]);
     getSize();
