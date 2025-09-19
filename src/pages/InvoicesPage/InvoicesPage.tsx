@@ -1,3 +1,9 @@
+import CreateInvoiceButton from '../../components/Button/CreateInvoiceButton';
+import Customers from '../../components/Customers';
+import Pagination from '../../components/Pagination';
+import SearchBar from '../../components/SearchBar';
+import { mockCustomers } from './mockCustomers';
+
 const InvoiceMetadata = () => {
   return (
     <>
@@ -12,12 +18,18 @@ const InvoiceMetadata = () => {
     </>
   );
 };
+
 const InvoicesPage: React.FC = () => (
   <>
     <InvoiceMetadata />
-    <div>
-      <h1>Invoices Page</h1>
-      <p>This is the invoices page placeholder.</p>
+    <div className="flex h-full flex-col p-6 md:p-12">
+      <h1 className="mb-4 font-lusitana text-2xl md:mb-8">Invoices</h1>
+      <div className="mb-4 flex justify-between gap-2">
+        <SearchBar />
+        <CreateInvoiceButton path="/invoices/create" />
+      </div>
+      <Customers mockCustomers={mockCustomers} />
+      <Pagination />
     </div>
   </>
 );
