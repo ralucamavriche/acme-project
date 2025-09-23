@@ -1,4 +1,4 @@
-import { Customer, CustomerDataProps } from '../../../types';
+import type { Customer, CustomerDataProps } from '../../../types';
 import { formatCurrency } from '../../../utils/formatCurrency';
 import { formatDate } from '../../../utils/formatDate/formatDate';
 import ActionButton from '../../Button/ActionButton';

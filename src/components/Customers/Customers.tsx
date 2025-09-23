@@ -1,4 +1,4 @@
-import { CustomerDataProps } from '../../types';
+import type { CustomerDataProps } from '../../types';
 import CustomerDesktopCard from './CustomerDesktopCard/CustomerDesktopCard';
 import CustomerMobileCard from './CustomerMobileCard/CustomerMobileCard';
 

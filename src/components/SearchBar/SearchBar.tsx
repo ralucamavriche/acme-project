@@ -1,21 +1,12 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { debounce } from '../../utils/debounce/debounce';
 
 interface SearchBarProps {
   handleSearch: (query: string) => void;
 }
 
-function debounce(func, timeout = 300) {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      func.apply(this, args);
-    }, timeout);
-  };
-}
-
 const SearchBar = ({ handleSearch }: SearchBarProps) => {
-  const debouncedSearch = debounce((query) => handleSearch(query));
+  const debouncedSearch = debounce((query: string) => handleSearch(query));
 
   return (
     <div className="flex flex-1">

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react-vite/*';
+import type { Meta, StoryObj } from '@storybook/react';
 import ActionButton from './ActionButton';
 
 type Story = StoryObj<typeof ActionButton>;

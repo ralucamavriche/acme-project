@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import CreateInvoiceButton from '../../components/Button/CreateInvoiceButton';
 import Customers from '../../components/Customers';
 import Pagination from '../../components/Pagination';
 import SearchBar from '../../components/SearchBar';
+import Spinner from '../../components/Spinner';
 import { getAllCustomers } from '../../services/api/customer.api';
-import { Customer } from '../../types';
+import type { Customer } from '../../types';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -24,21 +25,31 @@ const InvoiceMetadata = () => {
 };
 
 const InvoicesPage: React.FC = () => {
-  const [customers, setCustomers] = useState([]);
+  const [customers, setCustomers] = useState<Customer[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const filteredCustomers: Array<Customer> = customers.filter((customer) => {
+  const filteredCustomers: Array<Customer> = useMemo(() => {
     const query = searchQuery.toLowerCase();
-    return Object.values(customer).some(
-      (value) => typeof value === 'string' && value.toLowerCase().includes(query),
+    return customers.filter((customer) =>
+      Object.values(customer).some(
+        (value) => typeof value === 'string' && value.toLowerCase().includes(query),
+      ),
     );
-  });
-  const totalPages: number = Math.ceil(filteredCustomers.length / ITEMS_PER_PAGE);
-  const paginatedItems: Array<Customer> = filteredCustomers.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE,
-  );
+  }, [customers, searchQuery]);
+
+  const totalPages: number = useMemo(() => {
+    return Math.ceil(filteredCustomers.length / ITEMS_PER_PAGE);
+  }, [filteredCustomers]);
+
+  const paginatedItems: Array<Customer> = useMemo(() => {
+    return filteredCustomers.slice(
+      (currentPage - 1) * ITEMS_PER_PAGE,
+      currentPage * ITEMS_PER_PAGE,
+    );
+  }, [filteredCustomers, currentPage]);
+
   const handlePreviousPage = (): void => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
@@ -53,9 +64,18 @@ const InvoicesPage: React.FC = () => {
   };
 
   useEffect(() => {
-    getAllCustomers()
-      .then((data) => setCustomers(data))
-      .catch((error) => console.error(error));
+    const fetchCustomers = async () => {
+      setLoading(true);
+      try {
+        const data = await getAllCustomers<Customer[] | null>();
+        if (data) setCustomers(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCustomers();
   }, []);
 
   return (
@@ -67,14 +87,24 @@ const InvoicesPage: React.FC = () => {
           <SearchBar handleSearch={handleSearch} />
           <CreateInvoiceButton path="/invoices/create" />
         </div>
-        <Customers customers={paginatedItems} />
-        <Pagination
-          totalPages={totalPages}
-          currentPage={currentPage}
-          onPreviousPageHandle={handlePreviousPage}
-          onNextPageHandle={handleNextPage}
-          onPageChange={setCurrentPage}
-        />
+        {loading ? (
+          <div className="flex justify-center py-8">
+            <Spinner />
+          </div>
+        ) : filteredCustomers.length === 0 ? (
+          <div className="py-8 text-center text-gray-500">No results found.</div>
+        ) : (
+          <>
+            <Customers customers={paginatedItems} />
+            <Pagination
+              totalPages={totalPages}
+              currentPage={currentPage}
+              onPreviousPageHandle={handlePreviousPage}
+              onNextPageHandle={handleNextPage}
+              onPageChange={setCurrentPage}
+            />
+          </>
+        )}
       </div>
     </>
   );

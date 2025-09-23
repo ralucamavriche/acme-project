@@ -1,4 +1,4 @@
-import { StoryObj } from '@storybook/react-vite/*';
+import type { StoryObj } from '@storybook/react-vite';
 import Chart from './Chart';
 
 const meta = {

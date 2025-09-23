@@ -1,25 +1,14 @@
-import { IError } from '../../types';
+import { BASE_URL_API } from '../../config';
 
-const GENERAL_ERROR = {
-  error: 'Something went wrong!',
-  code: 500,
-};
-
-const handleError = (message?: string, code?: number): IError => {
-  return {
-    error: message || GENERAL_ERROR.error,
-    code: code || GENERAL_ERROR.code,
-  };
-};
-
-export async function getAllCustomers() {
+export async function getAllCustomers<T>(): Promise<T | null> {
   try {
-    const response = await fetch('https://68c97a0cceef5a150f650975.mockapi.io/api/v1/invoices');
+    const response = await fetch(`${BASE_URL_API}/invoices`);
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(`HTTP error! status: ${response.status}`, { cause: response.status });
     }
-    return response.json();
-  } catch (error) {
-    return handleError('Failed to fetch customers', error.code);
+    return response.json() as T;
+  } catch (error: unknown) {
+    console.error('Error fetching invoices:', error);
+    return null;
   }
 }
