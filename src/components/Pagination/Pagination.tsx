@@ -20,8 +20,8 @@ const Pagination: React.FC<PaginationProps> = ({
   const pages: Array<number> = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="mt-5 flex justify-center">
-      <div className="inline-flex">
+    <div className="mt-5 flex w-full max-w-full justify-center">
+      <div className="flex w-full max-w-full sm:w-auto">
         <button
           disabled={currentPage === 1}
           onClick={onPreviousPageHandle}
@@ -32,13 +32,13 @@ const Pagination: React.FC<PaginationProps> = ({
           <span className="sr-only">Previous</span>
           <ArrowLeftIcon aria-hidden="true" className="size-5" />
         </button>
-        <div className="flex -space-x-px">
+        <div className="flex w-full max-w-full -space-x-px sm:w-auto">
           {pages.map((page) => (
             <button
               key={page}
               onClick={() => onPageChange(page)}
               aria-current={page === currentPage ? 'page' : undefined}
-              className={`flex h-10 w-10 items-center justify-center border text-sm ${
+              className={`flex h-10 w-full flex-1 items-center justify-center border text-sm sm:w-10 sm:flex-none ${
                 page === currentPage
                   ? 'pointer-events-none z-10 border-blue-600 bg-blue-600 text-gray-300'
                   : 'hover:bg-gray-100'
