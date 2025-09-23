@@ -1,10 +1,10 @@
-import { Customer, MockCustomerDataProps } from '../../../types';
+import { Customer, CustomerDataProps } from '../../../types';
 import { formatCurrency } from '../../../utils/formatCurrency';
 import { formatDate } from '../../../utils/formatDate/formatDate';
 import ActionButton from '../../Button/ActionButton';
 import StatusButton from '../../Button/StatusButton';
 
-const CustomerDesktopCard = ({ mockCustomers }: MockCustomerDataProps) => {
+const CustomerDesktopCard = ({ customers }: CustomerDataProps) => {
   return (
     <table className="hidden w-full md:table">
       <thead className="hidden text-left text-sm font-normal md:table-header-group">
@@ -30,7 +30,7 @@ const CustomerDesktopCard = ({ mockCustomers }: MockCustomerDataProps) => {
         </tr>
       </thead>
       <tbody className="bg-white p-4">
-        {mockCustomers.map((person: Customer) => {
+        {customers.map((person: Customer) => {
           const { id, customerAvatar, customerName, customerEmail, amount, createdAt, isPaid } =
             person;
           return (

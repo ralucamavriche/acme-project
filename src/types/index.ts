@@ -1,4 +1,3 @@
-// Global TypeScript types
 export interface Customer {
   id: string;
   customerName: string;
@@ -10,6 +9,11 @@ export interface Customer {
   isPaid: boolean;
 }
 
-export interface MockCustomerDataProps {
-  mockCustomers: Customer[];
+export interface CustomerDataProps {
+  customers: Customer[];
+}
+
+export interface IError {
+  error: string;
+  code: number;
 }

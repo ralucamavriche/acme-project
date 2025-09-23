@@ -1,13 +1,13 @@
-import { Customer, MockCustomerDataProps } from '../../../types';
+import { Customer, CustomerDataProps } from '../../../types';
 import { formatCurrency } from '../../../utils/formatCurrency';
 import { formatDate } from '../../../utils/formatDate/formatDate';
 import ActionButton from '../../Button/ActionButton';
 import StatusButton from '../../Button/StatusButton';
 
-const CustomerMobileCard = ({ mockCustomers }: MockCustomerDataProps) => {
+const CustomerMobileCard = ({ customers }: CustomerDataProps) => {
   return (
     <div className="md:hidden">
-      {mockCustomers.map((person: Customer) => {
+      {customers.map((person: Customer) => {
         const { id, customerAvatar, customerName, customerEmail, amount, createdAt, isPaid } =
           person;
         return (
