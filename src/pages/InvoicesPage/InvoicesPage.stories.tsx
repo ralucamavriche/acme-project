@@ -11,7 +11,7 @@ export default meta;
 export const Default: StoryObj<typeof InvoicesPage> = {
   render: () => (
     <MemoryRouter>
-      <InvoicesPage />,
+      <InvoicesPage />
     </MemoryRouter>
   ),
 };

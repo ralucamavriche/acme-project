@@ -19,7 +19,7 @@ const SearchBar = ({ handleSearch }: SearchBarProps) => {
         </span>
         <input
           onChange={(event) => debouncedSearch(event.target.value)}
-          className="placeholder: w-full rounded-md border border-gray-200 bg-white py-2 pl-10 pr-3 text-sm text-gray-500"
+          className="w-full rounded-md border border-gray-200 bg-white py-2 pl-10 pr-3 text-sm placeholder:text-gray-500"
           type="text"
           id="search"
           placeholder="Search invoices..."
