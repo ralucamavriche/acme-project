@@ -88,7 +88,7 @@ const InvoicesPage: React.FC = () => {
           <CreateInvoiceButton path="/invoices/create" />
         </div>
         {loading ? (
-          <div className="flex justify-center py-8">
+          <div role="status" className="flex justify-center py-8">
             <Spinner />
           </div>
         ) : filteredCustomers.length === 0 ? (
