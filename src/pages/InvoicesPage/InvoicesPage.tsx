@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import CreateInvoiceButton from '../../components/Button/CreateInvoiceButton';
 import Customers from '../../components/Customers';
 import Pagination from '../../components/Pagination';
 import SearchBar from '../../components/SearchBar';
 import Spinner from '../../components/Spinner';
-import { getAllCustomers } from '../../services/api/customer.api';
+import { useGetAllCustomers } from '../../hooks/useCustomers';
 import type { Customer } from '../../types';
 
 const ITEMS_PER_PAGE = 6;
@@ -25,10 +25,9 @@ const InvoiceMetadata = () => {
 };
 
 const InvoicesPage: React.FC = () => {
-  const [customers, setCustomers] = useState<Customer[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const [loading, setLoading] = useState(false);
+  const { customers, loading } = useGetAllCustomers();
 
   const filteredCustomers: Array<Customer> = useMemo(() => {
     const query = searchQuery.toLowerCase();
@@ -63,21 +62,6 @@ const InvoicesPage: React.FC = () => {
     setCurrentPage(1);
   };
 
-  useEffect(() => {
-    const fetchCustomers = async () => {
-      setLoading(true);
-      try {
-        const data = await getAllCustomers<Customer[] | null>();
-        if (data) setCustomers(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCustomers();
-  }, []);
-
   return (
     <>
       <InvoiceMetadata />
@@ -85,7 +69,7 @@ const InvoicesPage: React.FC = () => {
         <h1 className="mb-4 font-lusitana text-2xl md:mb-8">Invoices</h1>
         <div className="mb-4 flex justify-between gap-2">
           <SearchBar handleSearch={handleSearch} />
-          <CreateInvoiceButton path="/invoices/create" />
+          <CreateInvoiceButton path="/dashboard/invoices/create" />
         </div>
         {loading ? (
           <div role="status" className="flex justify-center py-8">
