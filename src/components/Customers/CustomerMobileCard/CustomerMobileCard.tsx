@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Customer, CustomerDataProps } from '../../../types';
 import { formatCurrency } from '../../../utils/formatCurrency';
 import { formatDate } from '../../../utils/formatDate/formatDate';
@@ -34,7 +35,9 @@ const CustomerMobileCard = ({ customers }: CustomerDataProps) => {
                 <p>{formatDate(new Date(createdAt))}</p>
               </div>
               <div className="flex justify-end gap-2">
-                <ActionButton action="update" />
+                <Link to={`/dashboard/invoices/${id}/edit`}>
+                  <ActionButton action="update" />
+                </Link>
                 <ActionButton action="delete" />
               </div>
             </div>

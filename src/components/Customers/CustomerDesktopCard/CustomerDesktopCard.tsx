@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Customer, CustomerDataProps } from '../../../types';
 import { formatCurrency } from '../../../utils/formatCurrency';
 import { formatDate } from '../../../utils/formatDate/formatDate';
@@ -54,7 +55,9 @@ const CustomerDesktopCard = ({ customers }: CustomerDataProps) => {
                 <StatusButton isPaid={isPaid} />
               </td>
               <td className="flex justify-end gap-2 whitespace-nowrap p-4 text-gray-500">
-                <ActionButton action="update" />
+                <Link to={`/dashboard/invoices/${id}/edit`}>
+                  <ActionButton action="update" />
+                </Link>
                 <ActionButton action="delete" />
               </td>
             </tr>
