@@ -26,8 +26,8 @@ const UpdateInvoicePage = () => {
           <Link className="text-gray-500" to="/dashboard/invoices">
             Invoices<span className="ml-3">/</span>
           </Link>
-          <Link className="ml-3" to="/dashboard/invoices/update">
-            Update Invoice
+          <Link className="ml-3" to={`/dashboard/invoices/${id}/edit`}>
+            Edit Invoice
           </Link>
         </div>
         <EditInvoiceForm customers={customers} id={id} />

@@ -21,7 +21,7 @@ export async function getCustomerById<T>(id: string): Promise<T | null> {
     }
     return response.json() as T;
   } catch (error: unknown) {
-    console.error(`Error fetching invoice with id ${id}:`, error);
+    console.error(`Error fetching customer with id ${id}:`, error);
     return null;
   }
 }

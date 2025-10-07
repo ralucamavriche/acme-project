@@ -13,9 +13,11 @@ const EditInvoiceForm = ({ customers, id }: EditInvoiceFormProps) => {
   const [status, setStatus] = useState('pending');
   const [selectedCustomer, setSelectedCustomer] = useState(id ?? '');
   const { customer } = useGetCustomerById(selectedCustomer);
+  const [amount, setAmount] = useState('');
 
   useEffect(() => {
     setStatus(customer?.isPaid ? 'paid' : 'pending');
+    setAmount(customer?.amount || '');
   }, [customer]);
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -55,7 +57,8 @@ const EditInvoiceForm = ({ customers, id }: EditInvoiceFormProps) => {
             <input
               type="number"
               id="amount"
-              value={customer?.amount || ''}
+              value={amount}
+              onChange={(event) => setAmount(event.target.value)}
               step={0.01}
               aria-describedby="helper-text-explanation"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
@@ -76,6 +79,7 @@ const EditInvoiceForm = ({ customers, id }: EditInvoiceFormProps) => {
                 name="status"
                 value="pending"
                 checked={status === 'pending'}
+                onChange={() => setStatus('pending')}
               />
               <label htmlFor="pending">
                 <StatusButton isPaid={false} />
@@ -88,6 +92,7 @@ const EditInvoiceForm = ({ customers, id }: EditInvoiceFormProps) => {
                 name="status"
                 value="paid"
                 checked={status === 'paid'}
+                onChange={() => setStatus('paid')}
               />
               <label htmlFor="paid">
                 <StatusButton isPaid={true} />
