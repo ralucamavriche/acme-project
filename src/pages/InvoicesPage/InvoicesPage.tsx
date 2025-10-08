@@ -4,10 +4,8 @@ import Customers from '../../components/Customers';
 import Pagination from '../../components/Pagination';
 import SearchBar from '../../components/SearchBar';
 import Spinner from '../../components/Spinner';
-import { useGetAllCustomers } from '../../hooks/useCustomers';
+import { useCustomers } from '../../hooks/useCustomers';
 import type { Customer } from '../../types';
-
-const ITEMS_PER_PAGE = 6;
 
 const InvoiceMetadata = () => {
   return (
@@ -25,41 +23,29 @@ const InvoiceMetadata = () => {
 };
 
 const InvoicesPage: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const { customers, loading } = useGetAllCustomers();
+  const { customers, loading, total, page, setPage } = useCustomers();
 
   const filteredCustomers: Array<Customer> = useMemo(() => {
     const query = searchQuery.toLowerCase();
-    return customers.filter((customer) =>
+    return (customers ?? []).filter((customer) =>
       Object.values(customer).some(
         (value) => typeof value === 'string' && value.toLowerCase().includes(query),
       ),
     );
   }, [customers, searchQuery]);
 
-  const totalPages: number = useMemo(() => {
-    return Math.ceil(filteredCustomers.length / ITEMS_PER_PAGE);
-  }, [filteredCustomers]);
-
-  const paginatedItems: Array<Customer> = useMemo(() => {
-    return filteredCustomers.slice(
-      (currentPage - 1) * ITEMS_PER_PAGE,
-      currentPage * ITEMS_PER_PAGE,
-    );
-  }, [filteredCustomers, currentPage]);
-
   const handlePreviousPage = (): void => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+    if (page > 1) setPage(page - 1);
   };
 
   const handleNextPage = (): void => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    if (page < total) setPage(page + 1);
   };
 
   const handleSearch = (query: string): void => {
     setSearchQuery(query);
-    setCurrentPage(1);
+    setPage(1);
   };
 
   return (
@@ -79,13 +65,13 @@ const InvoicesPage: React.FC = () => {
           <div className="py-8 text-center text-gray-500">No results found.</div>
         ) : (
           <>
-            <Customers customers={paginatedItems} />
+            <Customers customers={customers ?? []} />
             <Pagination
-              totalPages={totalPages}
-              currentPage={currentPage}
+              totalPages={total}
+              currentPage={page}
               onPreviousPageHandle={handlePreviousPage}
               onNextPageHandle={handleNextPage}
-              onPageChange={setCurrentPage}
+              onPageChange={setPage}
             />
           </>
         )}
