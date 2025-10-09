@@ -50,6 +50,20 @@ This project is a modern, responsive web application for managing invoices and c
    # or
    npm run storybook
    ```
+## Deployment / Live Demo
+
+The app can be deployed to any static hosting service (e.g., Vercel, Netlify, GitHub Pages) or your own server. After building, deploy the contents of the `dist` folder.
+
+**Live Demo:**
+> [https://acme-project-g5ta1gyvn-ralucamavriches-projects.vercel.app/](https://acme-project-g5ta1gyvn-ralucamavriches-projects.vercel.app/)
+
+**To build for production:**
+```sh
+pnpm build
+# or
+npm run build
+```
+The output will be in the `dist/` directory.
 
 ## Folder Structure
 - `src/components/` — Reusable UI components (Customers, Invoices, Buttons, Forms, etc.)
