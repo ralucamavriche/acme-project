@@ -1,205 +1,151 @@
-## Using This Boilerplate for New Projects
+# ACME Invoice Management App
 
-### 1. Clone or Fork
+This project is a modern, responsive web application for managing invoices and customers, built with **React**, **TypeScript**, and **Tailwind CSS**.
 
-- **Clone:**
+**Live Demo:** [https://vercel.com/ralucamavriches-projects/acme-project](https://vercel.com/ralucamavriches-projects/acme-project)
 
-  ```sh
-  git clone https://github.com/ralucamavriche/react-boilerplate.git
-  cd react-boilerplate
-  ```
+---
 
-- **Fork:**
-  - Click “Fork” on GitHub, then clone your fork:
-    ```sh
-    git clone https://github.com/<your-username>/react-boilerplate.git
-    cd react-boilerplate
-    ```
+## Table of Contents
 
-### 2. Start Fresh
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Deployment](#deployment)
+- [Folder Structure](#folder-structure)
+- [API](#api)
+  - [Invoices](#invoices)
+  - [Error Responses](#error-responses)
+- [Contributing](#contributing)
+- [License](#license)
 
-- Remove the existing git history:
-  ```sh
-  rm -rf .git
-  git init
-  git branch -m main
-  git add .
-  git commit -m "Initial commit for my new project"
-  ```
+---
 
-- Update `package.json`:
-  - Change the `name`, `description`, and other fields as needed.
+## Features
 
-### 3. Install Dependencies
+- **Customer Management:** View, search, and paginate through a list of customers. Each customer has details such as name, email, amount, status, and creation date.  
+- **Invoice Management:** Create, edit, and view invoices for customers. Invoice forms are fully controlled and support validation.  
+- **Pagination:** API-driven pagination for customer and invoice lists, with navigation controls and accurate page counts.  
+- **Search:** Real-time search for customers and invoices, with results updating as you type.  
+- **Loading States:** Skeleton loaders and spinners provide feedback during data fetching.  
+- **API Integration:** All data is fetched from a backend API with support for pagination and search queries.  
+- **Accessibility:** Semantic HTML, keyboard navigation, and accessible components.  
+- **Testing:** Comprehensive unit and integration tests using Vitest and React Testing Library.  
+- **Storybook:** Isolated component development and documentation with Storybook.  
+- **Responsive Design:** Mobile-first, works on all screen sizes.  
 
-```sh
-pnpm install
-```
-(or use `npm install` or `yarn install`)
+---
 
-### 4. Start Building
+## Tech Stack
 
-- Use the provided scripts to run, build, test, and develop your new app.
- # React Boilerplate Documentation
+- React 18  
+- TypeScript  
+- Tailwind CSS  
+- Vite  
+- React Router  
+- Vitest & React Testing Library  
+- Storybook  
 
- ## Overview
+---
 
- This project is a modern React application using Vite, TypeScript, Tailwind CSS, Storybook, and Vitest for testing. It is set up for fast development, strict linting, and easy customization.
+## Getting Started
 
- ---
-
- ## Tools & Technologies
-
- - **React 19**: UI library for building interactive interfaces.
- - **Vite**: Fast build tool and dev server.
- - **TypeScript**: Static typing for JavaScript.
- - **Tailwind CSS**: Utility-first CSS framework.
- - **Storybook**: Isolated UI component development and documentation.
- - **Vitest**: Unit and integration testing framework.
- - **ESLint**: Linting for code quality (optional, see setup).
- - **Prettier**: Code formatting.
- - **PostCSS**: CSS processing pipeline.
-
- ---
-
- ## Installation
-
- 1. **Clone the repository:**
-    ```sh
-    git clone <your-repo-url>
-    cd react-boilerplate
-    ```
-
- 2. **Install dependencies:**
-    ```sh
-    pnpm install
-    ```
-    (Or use `npm install` or `yarn install` if you prefer.)
-
- ---
-
- ## Running the App
-
- - **Start development server:**
+1. **Install dependencies:**
+   ```sh
+   pnpm install
+   # or
+   npm install
+   ```
+2. **Start the development server:**
    ```sh
    pnpm dev
+   # or
+   npm run dev
    ```
-   The app will be available at `http://localhost:5173` (default Vite port).
-
- ---
-
- ## Building for Production
-
- - **Build the app:**
-   ```sh
-   pnpm build
-   ```
-   Output will be in the `dist/` folder.
-
- - **Preview the production build:**
-   ```sh
-   pnpm preview
-   ```
-
- ---
-
- ## Testing
-
- - **Run all tests:**
+3. **Run tests:**
    ```sh
    pnpm test
+   # or
+   npm test
    ```
-
- - **Run tests in watch mode:**
-   ```sh
-   pnpm test:watch
-   ```
-
- - **Run tests with UI:**
-   ```sh
-   pnpm test:ui
-   ```
-
- - **Check coverage:**
-   ```sh
-   pnpm test:coverage
-   ```
-
- ---
-
- ## Storybook
-
- - **Start Storybook for component development:**
+4. **Run Storybook:**
    ```sh
    pnpm storybook
+   # or
+   npm run storybook
    ```
-   Storybook will be available at `http://localhost:6006`.
+## Deployment
 
- - **Build Storybook static site:**
-   ```sh
-   pnpm build-storybook
-   ```
+The app can be deployed to any static hosting service (e.g., Vercel, Netlify, GitHub Pages) or your own server. After building, deploy the contents of the `dist` folder.
 
- ---
+**To build for production:**
+```sh
+pnpm build
+# or
+npm run build
+```
+The output will be in the `dist/` directory.
 
- ## Tailwind CSS
+## Folder Structure
+- `src/components/` — Reusable UI components (Customers, Invoices, Buttons, Forms, etc.)
+- `src/pages/` — Page-level components (InvoicesPage, CustomersPage, etc.)
+- `src/hooks/` — Custom React hooks for data fetching and state management
+- `src/services/api/` — API service functions for backend integration
+- `src/types/` — TypeScript type definitions
+- `src/utils/` — Utility functions (formatting, etc.)
 
- - **Configuration:**  
-   Tailwind is configured in `tailwind.config.js` and used via `postcss.config.js` with the plugin `@tailwindcss/postcss`.
- - **Usage:**  
-   Import `tailwind.css` in your main entry file (e.g., `main.tsx`). Use Tailwind utility classes in your components.
+## API
+The app expects a RESTful API with endpoints for managing customers and invoices. All endpoints return JSON. Pagination and search are supported. Below is a summary of the available endpoints, request/response formats, and authentication requirements.
 
- ---
+### Invoices
 
- ## Linting & Formatting
+#### List invoices
 
- - **Lint code (if ESLint is installed):**
-   ```sh
-   pnpm lint
-   ```
- - **Auto-fix lint errors:**
-   ```sh
-   pnpm lint:fix
-   ```
- - **Format code with Prettier:**
-   ```sh
-   pnpm format
-   ```
+- **Endpoint:** `GET /api/invoices?page=1&limit=6&search=...`  
+- **Query parameters:**
+  - `page` (number, optional): Page number (default: 1)
+  - `limit` (number, optional): Items per page (default: 6)
+  - `search` (string, optional): Search term
 
- ---
+- **Response:**
+```json
+[
+  {
+    "id": "1",
+    "customerName": "Terrance Sawayn",
+    "customerEmail": "Osborne2@gmail.com",
+    "customerAvatar": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/10.jpg",
+    "amount": "848.69",
+    "isPaid": false,
+    "createdAt": "2025-04-19T17:40:06.192Z",
+    "updatedAt": "2025-09-16T09:16:08.175Z"
+  },
+  {
+    "id": "2",
+    "customerName": "Roderick Corwin",
+    "customerEmail": "Burdette.Johns95@hotmail.com",
+    "customerAvatar": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/70.jpg",
+    "amount": "648.83",
+    "isPaid": false,
+    "createdAt": "2025-01-18T00:53:17.689Z",
+    "updatedAt": "2025-09-15T23:16:34.373Z"
+  }
+]
+```
+- **Get customer by ID**
+  - `GET /api/invoices/{id}`
+  - **Response:** Same as a single item in the list above.
+ 
+### Error Responses
 
- ## Project Structure
+- Standard error format:
+  ```json
+  {
+    "error": "Not found"
+  }
 
- ```
- src/
-   components/      # Reusable UI components
-   pages/           # Page-level components
-   hooks/           # Custom React hooks
-   styles/          # Global and Tailwind CSS
-   utils/           # Utility functions
-   App.tsx          # Main app component
-   main.tsx         # Entry point
- public/            # Static assets
- .storybook/        # Storybook config
- dist/              # Production build output
- ```
+## Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
- ---
-
- ## Additional Notes
-
- - **Environment:**  
-   Uses `pnpm` for package management (fast, disk-efficient). You can use `npm` or `yarn` if preferred.
- - **Customization:**  
-   Update `tailwind.config.js` and `vite.config.ts` for custom needs.
- - **Testing:**  
-   All tests are written with Vitest and can be found in `*.test.ts(x)` files.
-
- ---
-
- ## Troubleshooting
-
- - If Tailwind styles are not applied, ensure:
-   - `@tailwindcss/postcss` is installed.
-   - `tailwind.css` is imported in your entry file.
-   - Dev server is restarted after config changes.
+## License
+MIT
