@@ -1,205 +1,71 @@
-## Using This Boilerplate for New Projects
+# ACME Invoice Management App
 
-### 1. Clone or Fork
+This project is a modern, responsive web application for managing invoices and customers, built with React, TypeScript, and Tailwind CSS.
 
-- **Clone:**
+## Features
 
-  ```sh
-  git clone https://github.com/ralucamavriche/react-boilerplate.git
-  cd react-boilerplate
-  ```
+- **Customer Management**: View, search, and paginate through a list of customers. Each customer has details such as name, email, amount, status, and creation date.
+- **Invoice Management**: Create, edit, and view invoices for customers. Invoice forms are fully controlled and support validation.
+- **Pagination**: API-driven pagination for customer and invoice lists, with navigation controls and accurate page counts.
+- **Search**: Real-time search for customers and invoices, with results updating as you type.
+- **Loading States**: Skeleton loaders and spinners provide feedback during data fetching.
+- **API Integration**: All data is fetched from a backend API with support for pagination and search queries.
+- **Accessibility**: Semantic HTML, keyboard navigation, and accessible components.
+- **Testing**: Comprehensive unit and integration tests using Vitest and React Testing Library.
+- **Storybook**: Isolated component development and documentation with Storybook.
+- **Responsive Design**: Mobile-first, works on all screen sizes.
 
-- **Fork:**
-  - Click “Fork” on GitHub, then clone your fork:
-    ```sh
-    git clone https://github.com/<your-username>/react-boilerplate.git
-    cd react-boilerplate
-    ```
+## Tech Stack
+- React 18
+- TypeScript
+- Tailwind CSS
+- Vite
+- React Router
+- Vitest & React Testing Library
+- Storybook
 
-### 2. Start Fresh
+## Getting Started
 
-- Remove the existing git history:
-  ```sh
-  rm -rf .git
-  git init
-  git branch -m main
-  git add .
-  git commit -m "Initial commit for my new project"
-  ```
-
-- Update `package.json`:
-  - Change the `name`, `description`, and other fields as needed.
-
-### 3. Install Dependencies
-
-```sh
-pnpm install
-```
-(or use `npm install` or `yarn install`)
-
-### 4. Start Building
-
-- Use the provided scripts to run, build, test, and develop your new app.
- # React Boilerplate Documentation
-
- ## Overview
-
- This project is a modern React application using Vite, TypeScript, Tailwind CSS, Storybook, and Vitest for testing. It is set up for fast development, strict linting, and easy customization.
-
- ---
-
- ## Tools & Technologies
-
- - **React 19**: UI library for building interactive interfaces.
- - **Vite**: Fast build tool and dev server.
- - **TypeScript**: Static typing for JavaScript.
- - **Tailwind CSS**: Utility-first CSS framework.
- - **Storybook**: Isolated UI component development and documentation.
- - **Vitest**: Unit and integration testing framework.
- - **ESLint**: Linting for code quality (optional, see setup).
- - **Prettier**: Code formatting.
- - **PostCSS**: CSS processing pipeline.
-
- ---
-
- ## Installation
-
- 1. **Clone the repository:**
-    ```sh
-    git clone <your-repo-url>
-    cd react-boilerplate
-    ```
-
- 2. **Install dependencies:**
-    ```sh
-    pnpm install
-    ```
-    (Or use `npm install` or `yarn install` if you prefer.)
-
- ---
-
- ## Running the App
-
- - **Start development server:**
+1. **Install dependencies:**
+   ```sh
+   pnpm install
+   # or
+   npm install
+   ```
+2. **Start the development server:**
    ```sh
    pnpm dev
+   # or
+   npm run dev
    ```
-   The app will be available at `http://localhost:5173` (default Vite port).
-
- ---
-
- ## Building for Production
-
- - **Build the app:**
-   ```sh
-   pnpm build
-   ```
-   Output will be in the `dist/` folder.
-
- - **Preview the production build:**
-   ```sh
-   pnpm preview
-   ```
-
- ---
-
- ## Testing
-
- - **Run all tests:**
+3. **Run tests:**
    ```sh
    pnpm test
+   # or
+   npm test
    ```
-
- - **Run tests in watch mode:**
-   ```sh
-   pnpm test:watch
-   ```
-
- - **Run tests with UI:**
-   ```sh
-   pnpm test:ui
-   ```
-
- - **Check coverage:**
-   ```sh
-   pnpm test:coverage
-   ```
-
- ---
-
- ## Storybook
-
- - **Start Storybook for component development:**
+4. **Run Storybook:**
    ```sh
    pnpm storybook
-   ```
-   Storybook will be available at `http://localhost:6006`.
-
- - **Build Storybook static site:**
-   ```sh
-   pnpm build-storybook
+   # or
+   npm run storybook
    ```
 
- ---
+## Folder Structure
+- `src/components/` — Reusable UI components (Customers, Invoices, Buttons, Forms, etc.)
+- `src/pages/` — Page-level components (InvoicesPage, CustomersPage, etc.)
+- `src/hooks/` — Custom React hooks for data fetching and state management
+- `src/services/api/` — API service functions for backend integration
+- `src/types/` — TypeScript type definitions
+- `src/utils/` — Utility functions (formatting, etc.)
 
- ## Tailwind CSS
+## API
+- The app expects a REST API with endpoints for customers and invoices, supporting pagination and search:
+  - `GET /api/customers?page=1&limit=6&search=...`
+  - `GET /api/invoices?page=1&limit=6&search=...`
 
- - **Configuration:**  
-   Tailwind is configured in `tailwind.config.js` and used via `postcss.config.js` with the plugin `@tailwindcss/postcss`.
- - **Usage:**  
-   Import `tailwind.css` in your main entry file (e.g., `main.tsx`). Use Tailwind utility classes in your components.
+## Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
- ---
-
- ## Linting & Formatting
-
- - **Lint code (if ESLint is installed):**
-   ```sh
-   pnpm lint
-   ```
- - **Auto-fix lint errors:**
-   ```sh
-   pnpm lint:fix
-   ```
- - **Format code with Prettier:**
-   ```sh
-   pnpm format
-   ```
-
- ---
-
- ## Project Structure
-
- ```
- src/
-   components/      # Reusable UI components
-   pages/           # Page-level components
-   hooks/           # Custom React hooks
-   styles/          # Global and Tailwind CSS
-   utils/           # Utility functions
-   App.tsx          # Main app component
-   main.tsx         # Entry point
- public/            # Static assets
- .storybook/        # Storybook config
- dist/              # Production build output
- ```
-
- ---
-
- ## Additional Notes
-
- - **Environment:**  
-   Uses `pnpm` for package management (fast, disk-efficient). You can use `npm` or `yarn` if preferred.
- - **Customization:**  
-   Update `tailwind.config.js` and `vite.config.ts` for custom needs.
- - **Testing:**  
-   All tests are written with Vitest and can be found in `*.test.ts(x)` files.
-
- ---
-
- ## Troubleshooting
-
- - If Tailwind styles are not applied, ensure:
-   - `@tailwindcss/postcss` is installed.
-   - `tailwind.css` is imported in your entry file.
-   - Dev server is restarted after config changes.
+## License
+MIT
