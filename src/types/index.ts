@@ -11,6 +11,7 @@ export interface Customer {
 
 export interface CustomerDataProps {
   customers: Customer[];
+  loading?: boolean;
 }
 
 export interface IError {

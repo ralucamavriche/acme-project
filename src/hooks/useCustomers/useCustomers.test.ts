@@ -2,11 +2,13 @@ import { renderHook, waitFor } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import * as customerService from '../../services/api/customer.api';
 import { sampleCustomers } from '../../utils/customersDummyData';
-import { useGetAllCustomers, useGetCustomerById } from './useCustomers';
+import { useCustomers, useGetAllCustomers, useGetCustomerById } from './useCustomers';
 
 vi.mock('../../services/api/customer.api', () => ({
   getAllCustomers: vi.fn(),
   getCustomerById: vi.fn(),
+  getPaginatedCustomers: vi.fn(),
+  getTotalCustomersBySearchQuery: vi.fn(),
 }));
 
 describe('useGetAllCustomers', () => {
@@ -40,5 +42,31 @@ describe('useGetCustomerById', () => {
 
     expect(customerService.getCustomerById).toHaveBeenCalledWith('1');
     expect(customerService.getCustomerById).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('useCustomers', () => {
+  it('fetches paginated customers', async () => {
+    (customerService.getPaginatedCustomers as ReturnType<typeof vi.fn>).mockResolvedValue(
+      sampleCustomers.slice(0, 6),
+    );
+    (customerService.getTotalCustomersBySearchQuery as ReturnType<typeof vi.fn>).mockResolvedValue(
+      50,
+    );
+
+    const { result } = renderHook(() => useCustomers(1));
+
+    expect(result.current.loading).toBe(true);
+    expect(result.current.customers).toBeNull();
+    expect(result.current.page).toBe(1);
+    expect(result.current.search).toBe('');
+    expect(result.current.totalPages).toBe(0);
+
+    await waitFor(() => expect(result.current.loading).toBe(false));
+
+    expect(result.current.customers).toEqual(sampleCustomers.slice(0, 6));
+    expect(customerService.getPaginatedCustomers).toHaveBeenCalledTimes(1);
+    expect(customerService.getTotalCustomersBySearchQuery).toHaveBeenCalledWith('');
+    expect(customerService.getTotalCustomersBySearchQuery).toHaveBeenCalledTimes(1);
   });
 });
