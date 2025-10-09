@@ -2,6 +2,10 @@
 
 This project is a modern, responsive web application for managing invoices and customers, built with React, TypeScript, and Tailwind CSS.
 
+
+**Live Demo:**
+> [https://acme-project-g5ta1gyvn-ralucamavriches-projects.vercel.app/](https://acme-project-g5ta1gyvn-ralucamavriches-projects.vercel.app/)
+
 ## Features
 
 - **Customer Management**: View, search, and paginate through a list of customers. Each customer has details such as name, email, amount, status, and creation date.
