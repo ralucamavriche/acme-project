@@ -1,13 +1,8 @@
-import { useMemo, useState } from 'react';
 import CreateInvoiceButton from '../../components/Button/CreateInvoiceButton';
 import Customers from '../../components/Customers';
 import Pagination from '../../components/Pagination';
 import SearchBar from '../../components/SearchBar';
-import Spinner from '../../components/Spinner';
-import { useGetAllCustomers } from '../../hooks/useCustomers';
-import type { Customer } from '../../types';
-
-const ITEMS_PER_PAGE = 6;
+import { useCustomers } from '../../hooks/useCustomers';
 
 const InvoiceMetadata = () => {
   return (
@@ -25,41 +20,19 @@ const InvoiceMetadata = () => {
 };
 
 const InvoicesPage: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState('');
-  const { customers, loading } = useGetAllCustomers();
-
-  const filteredCustomers: Array<Customer> = useMemo(() => {
-    const query = searchQuery.toLowerCase();
-    return customers.filter((customer) =>
-      Object.values(customer).some(
-        (value) => typeof value === 'string' && value.toLowerCase().includes(query),
-      ),
-    );
-  }, [customers, searchQuery]);
-
-  const totalPages: number = useMemo(() => {
-    return Math.ceil(filteredCustomers.length / ITEMS_PER_PAGE);
-  }, [filteredCustomers]);
-
-  const paginatedItems: Array<Customer> = useMemo(() => {
-    return filteredCustomers.slice(
-      (currentPage - 1) * ITEMS_PER_PAGE,
-      currentPage * ITEMS_PER_PAGE,
-    );
-  }, [filteredCustomers, currentPage]);
+  const { customers, loading, totalPages, page, setPage, search, setSearch } = useCustomers();
 
   const handlePreviousPage = (): void => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+    if (page > 1) setPage(page - 1);
   };
 
   const handleNextPage = (): void => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    if (page < totalPages) setPage(page + 1);
   };
 
   const handleSearch = (query: string): void => {
-    setSearchQuery(query);
-    setCurrentPage(1);
+    setSearch(query);
+    setPage(1);
   };
 
   return (
@@ -68,27 +41,17 @@ const InvoicesPage: React.FC = () => {
       <div className="flex h-full flex-col p-6 md:p-12">
         <h1 className="mb-4 font-lusitana text-2xl md:mb-8">Invoices</h1>
         <div className="mb-4 flex justify-between gap-2">
-          <SearchBar handleSearch={handleSearch} />
+          <SearchBar search={search} handleSearch={handleSearch} />
           <CreateInvoiceButton path="/dashboard/invoices/create" />
         </div>
-        {loading ? (
-          <div role="status" className="flex justify-center py-8">
-            <Spinner />
-          </div>
-        ) : filteredCustomers.length === 0 ? (
-          <div className="py-8 text-center text-gray-500">No results found.</div>
-        ) : (
-          <>
-            <Customers customers={paginatedItems} />
-            <Pagination
-              totalPages={totalPages}
-              currentPage={currentPage}
-              onPreviousPageHandle={handlePreviousPage}
-              onNextPageHandle={handleNextPage}
-              onPageChange={setCurrentPage}
-            />
-          </>
-        )}
+        <Customers loading={loading} customers={customers ?? []} />
+        <Pagination
+          totalPages={totalPages}
+          currentPage={page}
+          onPreviousPageHandle={handlePreviousPage}
+          onNextPageHandle={handleNextPage}
+          onPageChange={setPage}
+        />
       </div>
     </>
   );

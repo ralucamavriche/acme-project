@@ -2,11 +2,14 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { debounce } from '../../utils/debounce/debounce';
 
 interface SearchBarProps {
+  search: string;
   handleSearch: (query: string) => void;
 }
 
 const SearchBar = ({ handleSearch }: SearchBarProps) => {
-  const debouncedSearch = debounce((query: string) => handleSearch(query));
+  const onChange = debounce((event: React.ChangeEvent<HTMLInputElement>) => {
+    handleSearch(event.target.value);
+  }, 150);
 
   return (
     <div className="flex flex-1">
@@ -18,7 +21,7 @@ const SearchBar = ({ handleSearch }: SearchBarProps) => {
           <MagnifyingGlassIcon className="h-[18px] w-[18px] text-gray-500" />
         </span>
         <input
-          onChange={(event) => debouncedSearch(event.target.value)}
+          onChange={onChange}
           className="w-full rounded-md border border-gray-200 bg-white py-2 pl-10 pr-3 text-sm placeholder:text-gray-500"
           type="text"
           id="search"
