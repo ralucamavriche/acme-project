@@ -64,7 +64,6 @@ export function useCustomers(initialPage = 1) {
       setLoading(true);
       try {
         const newTotal = await getTotalCustomersBySearchQuery(search);
-        console.log({ newTotal });
 
         const params = new URLSearchParams({
           page: page.toString(),

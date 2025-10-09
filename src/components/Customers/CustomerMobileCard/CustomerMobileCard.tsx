@@ -27,7 +27,7 @@ const CustomerMobileCardSkeleton = () => {
         </div>
         <div className="flex justify-end gap-2">
           <div className="h-6 w-6 rounded-full bg-gray-200" />
-          <div className="bg-gray -200 h-6 w-6 rounded-full" />
+          <div className="h-6 w-6 rounded-full bg-gray-200" />
         </div>
       </div>
     </div>

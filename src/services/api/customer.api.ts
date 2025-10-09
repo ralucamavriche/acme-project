@@ -28,9 +28,6 @@ export async function getTotalCustomersBySearchQuery(term: string): Promise<numb
   }
 }
 
-// getTotalCustomersBySearchQuery(""), 50
-// getTotalCustomersBySearchQuery("daniel") 3
-// getTotalCustomersBySearchQuery = term => ?search .length
 export async function getCustomerById<T>(id: string): Promise<T | null> {
   try {
     const response = await fetch(`${BASE_URL_API}/invoices/${id}`);
@@ -48,7 +45,7 @@ export async function getPaginatedCustomers<T>(params: URLSearchParams): Promise
   try {
     const response = await fetch(`${BASE_URL_API}/invoices?${params.toString()}`);
     if (response.status === 404) {
-      // If no customers found, return an empty arrays
+      // If no customers found, return an empty array
       return [] as unknown as T;
     }
     if (!response.ok) {
